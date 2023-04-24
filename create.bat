@@ -1,0 +1,1 @@
+flutter create src --project-name mobx_auth_animation --description "Bitsgap challenge" --org igor.pashutin.georgia
