@@ -7,8 +7,11 @@ class SignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('signup'),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Center(
+        child: Text('signup'),
+      ),
     );
   }
 }

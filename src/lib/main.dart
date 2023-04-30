@@ -34,15 +34,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeStore themeStore = Provider.of<ThemeStore>(context);
     return Observer(
-      builder: (BuildContext context) => MaterialApp(
-        theme: themeRepository.light(),
-        darkTheme: themeRepository.dark(),
-        themeMode: themeStore.themeMode,
-        home: Provider(
-          create: (_) => GetIt.instance<AuthRouteStore>(),
-          child: const AuthPage(),
-        ),
-      ),
+      builder: (BuildContext context) {
+        return MaterialApp(
+          theme: themeRepository.light(),
+          darkTheme: themeRepository.dark(),
+          themeMode: themeStore.themeMode,
+          home: Provider(
+            create: (_) => GetIt.instance<AuthRouteStore>(),
+            child: const AuthPage(),
+          ),
+        );
+      },
     );
   }
 }

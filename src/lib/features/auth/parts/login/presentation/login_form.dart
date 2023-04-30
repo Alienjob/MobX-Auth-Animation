@@ -7,8 +7,24 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('login'),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    )),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

@@ -11,17 +11,17 @@ abstract class AuthRouteStoreBase with Store {
   @observable
   bool complite = true;
 
-  @observable
-  bool canceled = false;
-
   @action
   void swich(AuthRoute newRoute) {
     if (newRoute == route) return;
     route = newRoute;
     if (complite = true) {
       complite = false;
-    } else {
-      canceled = true;
     }
+  }
+
+  @action
+  void finish() {
+    complite = true;
   }
 }

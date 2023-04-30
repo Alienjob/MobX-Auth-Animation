@@ -41,31 +41,26 @@ mixin _$AuthRouteStore on AuthRouteStoreBase, Store {
     });
   }
 
-  late final _$canceledAtom =
-      Atom(name: 'AuthRouteStoreBase.canceled', context: context);
-
-  @override
-  bool get canceled {
-    _$canceledAtom.reportRead();
-    return super.canceled;
-  }
-
-  @override
-  set canceled(bool value) {
-    _$canceledAtom.reportWrite(value, super.canceled, () {
-      super.canceled = value;
-    });
-  }
-
   late final _$AuthRouteStoreBaseActionController =
       ActionController(name: 'AuthRouteStoreBase', context: context);
 
   @override
-  void swich(AuthRoute route) {
+  void swich(AuthRoute newRoute) {
     final _$actionInfo = _$AuthRouteStoreBaseActionController.startAction(
         name: 'AuthRouteStoreBase.swich');
     try {
-      return super.swich(route);
+      return super.swich(newRoute);
+    } finally {
+      _$AuthRouteStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void finish() {
+    final _$actionInfo = _$AuthRouteStoreBaseActionController.startAction(
+        name: 'AuthRouteStoreBase.finish');
+    try {
+      return super.finish();
     } finally {
       _$AuthRouteStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -75,8 +70,7 @@ mixin _$AuthRouteStore on AuthRouteStoreBase, Store {
   String toString() {
     return '''
 route: ${route},
-complite: ${complite},
-canceled: ${canceled}
+complite: ${complite}
     ''';
   }
 }
